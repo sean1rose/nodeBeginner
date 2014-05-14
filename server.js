@@ -1,12 +1,15 @@
 // This is the code for our basic HTTP server (SERVER MODULE)
 
 var http = require("http"); // requries the http module that ships w/ Node.js. Then assigns result of require to local variable
-var url = require('url');
+var url = require("url");
 
-function start() {
+function start(route) {
     function onRequest(request, response) {
         var pathname = url.parse(request.url).pathname;
         console.log("Request for " + pathname + " received.");
+
+        route(pathname);
+
         response.writeHead(200, {"Content-Type": "text/plain"});
         response.write("Yo FOO!");
         response.end();
