@@ -4,4 +4,5 @@
 
 // import the server.js module, save it to local variable, start the server by calling the function in that module
 var server = require("./server");
-server.start();
+var router = require("./router");
+server.start(router.route);
